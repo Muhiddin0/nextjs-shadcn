@@ -1,0 +1,121 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+.container {
+  @apply mx-auto 2xl:px-12;
+}
+
+/*
+  * Mark animation
+*/
+
+@keyframes highlight {
+  to {
+    background-position: 0;
+  }
+}
+
+.mark {
+  animation: highlight linear forwards;
+  animation-timeline: view(60% 20%);
+  background: linear-gradient(
+    to right,
+    oklch(0.86 0.19 84.89 / 1) 50%,
+    oklch(0.86 0.19 84.89 / 0) 50%
+  );
+  background-position: 100%;
+  background-size: 200% 100%;
+  border-radius: 0.125rem;
+  padding-inline: 0.125rem;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .normal-input {
+    @apply flex h-10 w-full overflow-hidden rounded-md border border-input bg-background text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+}
+
+@layer components {
+  .sh-input {
+    @apply flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+}
+
+html,
+body {
+  scroll-behavior: smooth;
+}
+
+@layer base {
+  :root {
+    --background: 213 0% 100%;
+    --foreground: 213 0% 10%;
+    --card: 213 0% 100%;
+    --card-foreground: 213 0% 15%;
+    --popover: 213 0% 100%;
+    --popover-foreground: 213 95% 10%;
+    --primary: 213 100% 50%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 213 10% 90%;
+    --secondary-foreground: 0 0% 0%;
+    --muted: 175 10% 95%;
+    --muted-foreground: 213 0% 40%;
+    --accent: 175 10% 90%;
+    --accent-foreground: 213 0% 15%;
+    --destructive: 0 50% 50%;
+    --destructive-foreground: 213 0% 100%;
+    --border: 213 20% 82%;
+    --input: 213 20% 50%;
+    --ring: 213 100% 50%;
+    --radius: 1rem;
+  }
+  .dark {
+    --background: 213 10% 10%;
+    --foreground: 213 0% 100%;
+    --card: 213 0% 10%;
+    --card-foreground: 213 0% 100%;
+    --popover: 213 10% 5%;
+    --popover-foreground: 213 0% 100%;
+    --primary: 213 100% 50%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 213 10% 20%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 175 10% 25%;
+    --muted-foreground: 213 0% 65%;
+    --accent: 175 10% 25%;
+    --accent-foreground: 213 0% 95%;
+    --destructive: 0 50% 50%;
+    --destructive-foreground: 213 0% 100%;
+    --border: 213 20% 50%;
+    --input: 213 20% 50%;
+    --ring: 213 100% 50%;
+    --radius: 1rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
